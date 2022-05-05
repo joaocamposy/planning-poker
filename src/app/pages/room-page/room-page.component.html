@@ -1,0 +1,52 @@
+<div *ngIf="room" class="grid h-full" style="grid-template-rows: auto max-content">
+  <div class="flex overflow-auto justify-center items-center">
+    <div class="w-full max-w-screen-xl">
+      <div class="mb-12 text-center">
+        <button app-button (click)="changeName()">{{ room.name || 'Set a cool name for this room...' }}</button>
+      </div>
+      <div class="flex flex-wrap justify-center items-center">
+        <div *ngFor="let item of room.participants | keyvalue" class="w-32 my-5 mx-2 text-center">
+          <div app-playing-card [hidden]="room.started && !room.finished">
+            {{ item.value.vote }}
+          </div>
+          <div class="mt-2 font-medium text-sm truncate">
+            {{ itsYou(item.key) ? '* You *' : item.value.name }}
+          </div>
+        </div>
+      </div>
+      <div *ngIf="room.finished" class="grid grid-flow-col gap-4 justify-center mt-5">
+        <div *ngFor="let item of room.result">
+          <div class="h-32 flex items-end">
+            <div class="rounded-full bg-accent w-1 mx-auto" [style]="'height: ' + item.percentage + '%'"></div>
+          </div>
+          <div class="text-center mt-1">
+            {{ item.option }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p-4">
+    <div class="flex justify-center my-5">
+      <button app-button color="accent" *ngIf="room.started && !room.finished" (click)="finish()" type="button">
+        Show cards
+      </button>
+      <button app-button color="accent" *ngIf="room.finished" (click)="start()" type="button">
+        Vote next
+      </button>
+      <button app-button color="accent" *ngIf="!room.started && !room.finished" (click)="start()" type="button">
+        Start the first voting
+      </button>
+    </div>
+    <div *ngIf="room.started && !room.finished" class="flex justify-center items-center p-4 space-x-2">
+      <ng-container *ngFor="let option of room.voteOptions">
+        <button app-playing-card [clickable]="true" [active]="true" *ngIf="participant?.vote === option" (click)="vote()" type="button">
+          {{ option }}
+        </button>
+        <button app-playing-card [clickable]="true" *ngIf="participant?.vote !== option" type="button" (click)="vote(option)" type="button">
+          {{ option }}
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>

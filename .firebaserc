@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "planning-pocker-local": {
+      "hosting": {
+        "planning-pocker": [
+          "planning-pocker-local"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "planning-pocker-local"
+  }
+}
