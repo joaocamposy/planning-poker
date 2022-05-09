@@ -27,9 +27,7 @@ export class AppService {
         .load(this.userService.id)
         .then(user => this.user = user),
     ]).then(() => {
-      if (this.user.preferences?.theme) {
-        this.themeService.applyTheme(this.user.preferences?.theme);
-      }
+      this.themeService.applyTheme(this.user.preferences?.theme);
     });
   }
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AppService } from '../app.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,7 @@ export class ThemeService {
   appliedColor!: string;
   appliedAccentColor!: string;
 
-  applyTheme(theme: { color?: string, accentColor?: string }): void {
+  applyTheme(theme?: { color?: string, accentColor?: string }): void {
     this.applyColor(theme?.color || 'system');
     this.applyAccentColor(theme?.accentColor || '#5436b0');
   }
