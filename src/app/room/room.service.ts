@@ -6,7 +6,7 @@ import { Room } from './room';
   providedIn: 'root'
 })
 export class RoomService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore) { }
 
   load(id: string): Promise<Room | null> {
     const doc = this.firestore.doc<any>(`rooms/${id}`);
@@ -22,5 +22,13 @@ export class RoomService {
         })
         .catch(error => reject(error));
     });
+  }
+
+  create(name: string): Room {
+    const id = this.firestore.createId();
+    const doc = this.firestore.doc<any>(`rooms/${id}`);
+    const room = new Room({},  doc);
+    room.update({ id, name });
+    return room;
   }
 }

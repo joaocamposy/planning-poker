@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './src/**/*.{html,ts}'
@@ -8,6 +10,9 @@ module.exports = {
       colors: {
         'accent': 'var(--accent)',
         'accent-darken': 'var(--accent-darken)',
+      },
+      fontFamily: {
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
     },
   },

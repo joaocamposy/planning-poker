@@ -22,6 +22,8 @@ export class PlayingCardComponent {
       'border-accent',
       'font-medium',
       'rounded-lg',
+      'focus:ring-4',
+      'focus:outline-none',
     ];
 
     if (this.hidden || (this.clickable && this.active)) {
