@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ButtonModule } from '../atoms/button/button.module';
+import { IconModule } from '../atoms/icon/icon.module';
 import { PlayingCardModule } from '../atoms/playing-card/playing-card.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RoomPageResolver } from './room-page/room-page-resolver';
@@ -24,6 +25,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     CommonModule,
     ButtonModule,
+    IconModule,
     PlayingCardModule,
   ],
   declarations: [

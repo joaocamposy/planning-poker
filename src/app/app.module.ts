@@ -7,6 +7,7 @@ import { PagesModule } from './pages/pages.module';
 import { ButtonModule } from './atoms/button/button.module';
 import { UserModule } from './user/user.module';
 import { AppService } from './app.service';
+import { IconModule } from './atoms/icon/icon.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppService } from './app.service';
     UserModule,
     PagesModule,
     ButtonModule,
+    IconModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
